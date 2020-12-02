@@ -4,7 +4,7 @@ require_once "lib/dbconnect2.php";
 require_once "lib/board.php";
 require_once "lib/game.php";
 
-$method = $_SERVER['REGUEST_METHOD'];
+$method = $_SERVER['REQUEST_METHOD'];
 $request = explode ('/', trim($_SERVER['PATH_INFO'],'/'));
 $input = json_decode (file_get_contents('php://input'), true);
 

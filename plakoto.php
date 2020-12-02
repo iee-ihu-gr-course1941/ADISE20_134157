@@ -39,7 +39,7 @@ function handle_board($method) {
     }	
 }
 
-function handle_checker($method, $x,$y,$input) {;}
+function handle_checker($method, $x, $y, $input) {;}
  
-function handle_player($method, $p,$input) {;}
+function handle_player($method, $p, $input) {;}
 ?>

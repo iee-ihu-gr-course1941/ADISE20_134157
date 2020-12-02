@@ -15,7 +15,7 @@ switch ($r = array_shift($request)) {
 		switch ($b = array_shift($request)) {
 			case '':
             case null: handle_board($method); break;
-            case 'piece': handle_checker($method, $request[0],$request[1],$input); break;                       
+            case 'checker': handle_checker($method, $request[0],$request[1],$input); break;                       
 			default: header("HTTP/1.1 404 Not Found"); break;
          }
          break;

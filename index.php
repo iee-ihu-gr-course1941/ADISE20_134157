@@ -13,11 +13,13 @@
 
     	<link href="bootstrap/bootstrap.min.css" rel="stylesheet">
     	<link href="bootstrap/dashboard.css" rel="stylesheet">
-    
+		<link href="css/mybackgammon.css" rel="stylesheet">
+		
     	<script src="bootstrap/jquery-3.2.1.min.js"></script>
     	<script src="bootstrap/popper.min.js"></script>
     	<script src="bootstrap/bootstrap.min.js"></script>
     	<script src="js/ajax.js"></script>
+		<script src="js/mybackgammon.js"></script>
 	</head>
 	<body>
 		<header>

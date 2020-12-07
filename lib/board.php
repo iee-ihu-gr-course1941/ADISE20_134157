@@ -2,7 +2,7 @@
 function show_board() {
 	global $mysqli;
 	
-	$sql = 'SELECT * FROM board';
+	$sql = ' SELECT * FROM board ';
 	$st = $mysqli->prepare($sql);
 
 	$st->execute();
@@ -15,7 +15,7 @@ function show_board() {
 function reset_board() {
 	global $mysqli;
 	
-	$sql = 'CALL clean_board()';
+	$sql = ' CALL clean_board() ';
 	$mysqli->query($sql);
 	show_board();
 }

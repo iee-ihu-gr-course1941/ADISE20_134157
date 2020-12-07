@@ -28,8 +28,8 @@ function fill_board_by_data(data) {
 		var o = data[i];
 		var id = '#triangle_'+ o.x +'_' + o.y;
 		var c = (o.checker!=null)?o.checker_color + o.checker:'';
-		//var im = (o.checker!=null)?'<img class="checker" src="images/'+c+'.png">':'';
-		var im = c;
+		var im = (o.checker!=null)?'<img class="checker" src="images/'+c+'.png">':'';
+		//var im = c;
 		$(id).addClass(o.board_color+'_triangle').html(im);
 		
 	}

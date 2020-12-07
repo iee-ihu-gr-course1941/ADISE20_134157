@@ -2,7 +2,7 @@
 function show_status() {
 	
 	global $mysqli;
-	$sql = 'SELECT * FROM game_status';
+	$sql = ' SELECT * FROM game_status ';
 	$st = $mysqli->prepare($sql);
 
 	$st->execute();

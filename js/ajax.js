@@ -15,6 +15,7 @@ function do_goto_page(page) {
 	switch(btn) {
 		case '': 
 		case 'main': load_main(); break;
+		case 'game': load_game(); break;
 		case 'rules': load_rules(); break;
 		case 'login': load_login(); break;
 		default: load_not_found(); break;
@@ -23,12 +24,19 @@ function do_goto_page(page) {
 
 function load_main() {
 	$.ajax('ajax/index.php', { success: show_html_result} );
-	document.getElementById("BODY").style.backgroundImage = null;
+	//document.getElementById("BODY").style.backgroundImage = null;
 }
+
+
+function load_game() {
+	$('#maincontent').load('ajax/game.php');
+}
+
 
 function load_rules() {
 	$('#maincontent').load('ajax/rules.php');
 }
+
 
 function load_login() {
 	$('#maincontent').load('ajax/login.php');

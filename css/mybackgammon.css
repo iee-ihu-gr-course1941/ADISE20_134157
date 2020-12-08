@@ -1,5 +1,5 @@
-#backgammon_table TD {width: 4em; height:3em;border:1px solid black;text-align:center;}
-#backgammon_table {border-collapse: collapse;}
-TD.B_triangle {background-color:#DDD;}
-TD.W_triangle {background-color:#FFF;}
-IMG.checker {width: 2.1em; height:2.8em;}
+#chess_table TD {width: 3em; height:3em;border:1px solid black;text-align:center;}
+#chess_table {border-collapse: collapse;}
+TD.B_square {background-color:#DDD;}
+TD.W_square {background-color:#FFF;}
+IMG.piece {width: 2.1em; height:2.8em;}

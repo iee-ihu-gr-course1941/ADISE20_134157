@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>ΑΔΙΣΕ: Σκακι 2</title>
+    <title>ΑΔΙΣΕ: ΤΑΒΛΙ</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
 	<link href="css/mybackgammon.css" rel="stylesheet">
-	<script src="bootstrap/jquery-3.2.1.min.js"></script>
-    <script src="bootstrap/bootstrap.min.js"></script>
 	<script src="js/mybackgammon.js"></script>
   </head>
 <body>
-<h1>ΣΚΑΚΙ</h1>
-<div id='chess_board'>
-</div>
-<button id='chess_reset' class='btn btn-primary'>ΕΝΑΡΞΗ</button><br>
+	<h1>ΤΑΒΛΙ</h1>
+	
+	<div id='backgammon_board'>
+	</div>
+	
+	<button id='backgammon_reset' class='btn btn-primary'>ΕΝΑΡΞΗ</button><br>
 
 </body>
 </html>

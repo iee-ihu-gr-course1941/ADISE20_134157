@@ -27,10 +27,10 @@ function fill_board_by_data(data) {
 	for(var i=0;i<data.length;i++) {
 		var o = data[i];
 		var id = '#square_'+ o.x +'_' + o.y;
-		var c = (o.piece!=null)?o.piece_color + o.piece:'';
-		//var im = (o.piece!=null)?'<img class="piece" src="images/'+c+'.png">':'';
+		var c = (o.checker!=null)?o.checker_color + o.checker:'';
+		//var im = (o.checker!=null)?'<img class="piece" src="images/'+c+'.png">':'';
 		var im = c;
-		$(id).addClass(o.b_color+'_square').html(im);
+		$(id).addClass(o.board_color+'_square').html(im);
 		
 	}
 }

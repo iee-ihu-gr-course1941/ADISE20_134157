@@ -26,7 +26,7 @@ function fill_board() {
 function fill_board_by_data(data) {
 	for(var i=0;i<data.length;i++) {
 		var o = data[i];
-		var id = '#square_'+ o.x +'_' + o.y;
+		var id = '#square_'+ o.position_x +'_' + o.position_y;
 		var c = (o.checker!=null)?o.checker_color + o.checker:'';
 		//var im = (o.checker!=null)?'<img class="piece" src="images/'+c+'.png">':'';
 		var im = c;

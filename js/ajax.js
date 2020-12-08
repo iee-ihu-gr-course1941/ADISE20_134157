@@ -29,7 +29,7 @@ function load_main() {
 
 
 function load_game() {
-	$('#maincontent').load('ajax/game.php');
+	$('#maincontent').load('ajax/mygame.php');
 }
 
 

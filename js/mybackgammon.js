@@ -5,7 +5,7 @@ $(function () {
 
 
 function draw_empty_board() {
-	var t='<table id="chess_table">';
+	var t='<table id="backgammon_board">';
 	for(var i=8;i>0;i--) {
 		t += '<tr>';
 		for(var j=1;j<9;j++) {
@@ -29,7 +29,6 @@ function fill_board_by_data(data) {
 		var id = '#square_'+ o.position_x +'_' + o.position_y;
 		var c = (o.checker!=null)?o.checker_color + o.checker:'';
 		var im = (o.checker!=null)?'<img class="piece" src="images/'+c+'.png">':'';
-		$(id).addClass(o.board_color+'_square').html(im);
-		
+		$(id).addClass(o.board_color+'_square').html(im);	
 	}
 }

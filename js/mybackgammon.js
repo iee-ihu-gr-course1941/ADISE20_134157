@@ -15,7 +15,7 @@ function draw_empty_board() {
 	}
 	t+='</table>';
 	
-	$('#chess_board').html(t);
+	$('#backgammon_board').html(t);
 }
 
 function fill_board() {
@@ -28,8 +28,7 @@ function fill_board_by_data(data) {
 		var o = data[i];
 		var id = '#square_'+ o.position_x +'_' + o.position_y;
 		var c = (o.checker!=null)?o.checker_color + o.checker:'';
-		//var im = (o.checker!=null)?'<img class="piece" src="images/'+c+'.png">':'';
-		var im = c;
+		var im = (o.checker!=null)?'<img class="piece" src="images/'+c+'.png">':'';
 		$(id).addClass(o.board_color+'_square').html(im);	
 	}
 }

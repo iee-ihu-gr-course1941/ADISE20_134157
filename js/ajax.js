@@ -24,7 +24,7 @@ function do_goto_page(page) {
 
 function load_main() {
 	$.ajax('ajax/index.php', { success: show_html_result} );
-	//document.getElementById("BODY").style.backgroundImage = null;
+	document.getElementById("BODY").style.backgroundImage = null;
 }
 
 

@@ -18,6 +18,10 @@
     	<script src="bootstrap/popper.min.js"></script>
     	<script src="bootstrap/bootstrap.min.js"></script>
     	<script src="js/ajax.js"></script>
+		
+		<!-- Bootstrap core CSS -->
+		<link href="css/mybackgammon.css" rel="stylesheet">
+		<script src="js/mybackgammon.js"></script>
 	</head>
 	<body>
 		<header>

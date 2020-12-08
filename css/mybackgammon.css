@@ -1,4 +1,4 @@
-#backgammon_table TD {width: 3em; height:3em;border:1px solid black;text-align:center;}
+#backgammon_table TD {width: 4em; height:3em;border:1px solid black;text-align:center;}
 #backgammon_table {border-collapse: collapse;}
 TD.B_triangle {background-color:#DDD;}
 TD.W_triangle {background-color:#FFF;}

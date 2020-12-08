@@ -6,9 +6,9 @@ $(function () {
 
 function draw_empty_board() {
 	var t='<table id="backgammon_board">';
-	for(var i=8;i>0;i--) {
+	for(var i=12; i>0; i--){
 		t += '<tr>';
-		for(var j=1;j<9;j++) {
+		for(var j=12; j>0; j--){
 			t += '<td class="chess_square" id="square_'+j+'_'+i+'">' + j +','+i+'</td>'; 
 		}
 		t+='</tr>';

@@ -3,9 +3,9 @@
   header('Content-type: application/json');
 
   // If already logged in
-  //if(isset($_SESSION['loggedIN'])){
-    //header('Location: index.php');
-  //}
+  if(isset($_SESSION['loggedIN'])){
+    header('Location: index.php');
+  }
 
   if(isset($_POST['register'])){
     global $mysqli;
@@ -19,9 +19,9 @@
     $result = $stmt->get_result();
     $row = $result->fetch_all(MYSQLI_ASSOC);
     if($row[0]['c']>0) {
+      // exit("Player $username is already set. Please select another username.");
       header("HTTP/1.1 400 Bad Request");
       print json_encode(['errormesg'=>"Player $username is already set. Please select another username."]);
-      exit("Player $username is already set. Please select another username.");
     }else{
       $sql = "INSERT INTO users(username,password) VALUES(?,?) ";
       $stmt = $mysqli->prepare($sql);

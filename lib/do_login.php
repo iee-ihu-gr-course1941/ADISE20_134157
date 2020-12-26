@@ -3,7 +3,7 @@
   header('Content-type: application/json');
 
   // If already logged in
-  if(isset($_SESSION['loggedIN'])){
+  if(isset($_SESSION['username'])){
     header('Location: index.php');
   }
 
@@ -26,7 +26,7 @@
     if($result->num_rows == 1){
       // setcookie("username",$username, time()+86400); // Destroy cookie after a day
       $_SESSION['loggedIN'] = '1';
-      $_SESSION['username'] = $_COOKIE['PHPSESSID'];
+      $_SESSION['username'] = $_POST['usernamePHP'];
       exit('Login success.');
     }else{
       exit('Wrong inputs. Please try again.');

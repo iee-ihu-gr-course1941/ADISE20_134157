@@ -9,7 +9,6 @@ function check_status() {
 }
 
 function do_goto_page(page) {
-	
 	var btn = page;
 	
 	switch(btn) {

@@ -1,12 +1,14 @@
 <?php
-	SESSION_START();
+	require_once("lib/dbconnect.php");
+
+	//SESSION_START();
 	
-	if(!isset($_SESSION['loggedIN'])){
+	if(!isset($_SESSION['username'])){
 		header('Location: login.php');
 		exit();
 	}
 
-	require_once("lib/dbconnect.php");
+	echo '<p id="usr-test">'.$_SESSION['username'].'</p>';
 ?>
 
 <!doctype html>
@@ -18,20 +20,22 @@
     <meta name="author" content="it134157">
     <title>ADISE20_134157</title>
 	
-		<link rel="icon" href="https://static.thenounproject.com/png/502075-200.png">
+	<link rel="icon" href="https://static.thenounproject.com/png/502075-200.png">
 
-    	<link href="bootstrap/bootstrap.min.css" rel="stylesheet">
-    	<link href="bootstrap/dashboard.css" rel="stylesheet">
+    <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/dashboard.css" rel="stylesheet">
+	<link href="css/mychat.css" rel="stylesheet">
+
+	<!-- <link href="css/mycss.css" rel="stylesheet"> -->
 		
-		<!-- <link href="css/mycss.css" rel="stylesheet"> -->
+    <script src="bootstrap/jquery-3.2.1.min.js"></script>
+    <script src="bootstrap/popper.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+    <script src="js/ajax.js"></script>
+	<script src="js/main.js"></script>
 		
-    	<script src="bootstrap/jquery-3.2.1.min.js"></script>
-    	<script src="bootstrap/popper.min.js"></script>
-    	<script src="bootstrap/bootstrap.min.js"></script>
-    	<script src="js/ajax.js"></script>
-		
-		<link href="css/mybackgammon.css" rel="stylesheet">
-		<script src="js/mychess.js"></script>
+	<link href="css/mybackgammon.css" rel="stylesheet">
+	<!-- <script src="js/mychess.js"></script> -->
 
 </head>
 	<body>
@@ -68,6 +72,23 @@
 				
 				</main>
 			</div>
+
+			<div class="wrapper">
+				<div id="title" class="title">Online Chat room</div>
+
+				<div id="form" class="form">
+				<!-- Chat posts are here -->
+				</div>
+
+				<div class="typing-field">
+					<div class="input-data">
+						<input id="message-data" type="text" placeholder="Type message.." required>
+						<button id="chat-send-btn">Send</button>
+					</div>
+				</div>
+			</div>
 		</div>
+
+		
 	</body>
 </html>

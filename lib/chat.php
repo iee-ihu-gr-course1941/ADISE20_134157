@@ -3,13 +3,12 @@ include("dbconnect.php");
 
 if(isset($_REQUEST['action'])){
 	global $mysqli;
-
 	
 	$username = $_SESSION['username'];
 
 	switch($_REQUEST['action']){
 		case "SendMessage":
-		$msg = $_REQUEST['message'];
+			$msg = $_REQUEST['message'];
 			$sql = "INSERT INTO posts(msg,username) VALUES (?,?) ";
 			$stmt = $mysqli->prepare($sql);
 			$stmt ->bind_param('ss', $msg, $username);

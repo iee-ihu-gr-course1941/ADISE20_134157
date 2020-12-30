@@ -14,7 +14,6 @@ if(gethostname() == 'users.iee.ihu.gr') {
 	$mysqli = new mysqli($host, $user, $pass, $db, null,'/home/student/it/2013/it134157/mysql/run/mysql.sock');
 } else {
     $mysqli = new mysqli($host, $user, $pass, $db);
-    echo("DEBUG: XAMP Database.");
 }
 
 if ($mysqli->connect_errno) {

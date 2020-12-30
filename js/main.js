@@ -9,18 +9,10 @@
 			$.ajax({
 				url: 'lib/do_login.php',
 				method: 'POST',
-				data:{
-					login: 1,
-					usernamePHP: username,
-					passwordPHP: password
-				},
-				success: function(response){
-					$("#response").html(response);
-					if(response.indexOf('success')>=0){
-						window.location = 'index.php';
-					}
-				},
-				dataType: 'text'
+				dataType: "json",
+				contentType: 'application/json',
+				data: JSON.stringify( {username: username, password: password }),
+				success: function(data){alert("Welcome, "+data.username+".");window.location = "index.php";}
 			});
 		}
 	});// End of Login
@@ -38,52 +30,32 @@
 			$.ajax({
 				url: 'lib/do_register.php',
 				method: 'POST',
-				data:{
-					register: 1,
-					usernamePHP: username,
-					passwordPHP: password,
-					repeatpasswordPHP: repeatpassword
-				},
-				success: function(response){
-					$("#response").html(response);
-					if(response.indexOf('success')>=0){
-						window.location = 'login.php';
-					}
-				},
+				dataType: "json",
+				contentType: 'application/json',
+				data: JSON.stringify( {username: username, password: password }),
+				success: function(){window.location = "login.php";},
 				error: function(response){
 					$("#response").html(response);
-				},
-				dataType: 'text'
+				}
 			});
 		}
 	});// End of signup
 
-
-
 	$("#send-btn").click(function(){
 		var msg = $("#msg").val();
 
-			$.ajax({
-				url: 'send.php',
-				method: 'POST',
-				data:{
-					send: 1,
-					msg: msg
-				},
-				success: function(response){
-					$("#response").html(response);
-					if(response.indexOf('success')>=0){
-						window.location = 'index.php';
-					}
-				},
-				error: function(response){
-					$("#response").html(response);
-				},
-				dataType: 'text'
-			});
-			
+		$.ajax({
+			url: 'send.php',
+			method: 'POST',
+			dataType: "json",
+			contentType: 'application/json',
+			data: JSON.stringify( {msg: msg }),
+			success: function(data){window.location = "index.php";},
+			error: function(data){
+				$("#response").html(data);
+			}
+		});
 	});// End of signup
-
 
 	loadChat();
 
@@ -102,11 +74,11 @@
 			});
 	}
 
-	/*
+	
 	setInterval(function(){
 		loadChat(); // Each second call function loadChat()	
 	},2000);
-	*/
+	
 
 	/* Show Chat window */
 	$("#message-data").focus(function(){

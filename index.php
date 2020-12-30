@@ -7,8 +7,6 @@
 		header('Location: login.php');
 		exit();
 	}
-
-	echo '<p id="usr-test">'.$_SESSION['username'].'</p>';
 ?>
 
 <!doctype html>
@@ -33,6 +31,8 @@
     <script src="bootstrap/bootstrap.min.js"></script>
     <script src="js/ajax.js"></script>
 	<script src="js/main.js"></script>
+
+	<script src="js/tavli.js"></script>
 		
 	<link href="css/mybackgammon.css" rel="stylesheet">
 	<!-- <script src="js/mychess.js"></script> -->
@@ -68,7 +68,7 @@
 		<div class="container-fluid">
 			
 			<div class="row">
-				<main id='maincontent' role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+				<main id='maincontent' role="main" class="col-sm-9 ml-sm-auto col-md-11 pt-3">
 				
 				</main>
 			</div>
@@ -90,5 +90,93 @@
 		</div>
 
 		
+
+<div class="board_gui">
+
+<h1>ΤΑΒΛΙ</h1>
+
+<div class = "board">
+  <div class="left-bin">
+    <div class="top-row">
+      <div class="arrow-down odd"></div>
+      <div class="arrow-down even"></div>
+      <div class="arrow-down odd"></div>
+      <div class="arrow-down even"></div>
+      <div class="arrow-down odd"></div>
+      <div class="arrow-down even"></div>
+    </div>
+
+    <div class="bottom-row"> 
+      <div class="arrow-up odd"></div>
+      <div class="arrow-up even"></div>
+      <div class="arrow-up odd"></div>
+      <div class="arrow-up even"></div>
+      <div class="arrow-up odd"></div>
+      <div class="arrow-up even"></div>
+    </div>
+  </div> 
+  
+  <div class = "middle-bar"></div>
+
+  <div class = "right-bin">
+       <div class="top-row">
+      <div class="arrow-down odd"></div>
+      <div class="arrow-down even"></div>
+      <div class="arrow-down odd"></div>
+      <div class="arrow-down even"></div>
+      <div class="arrow-down odd"></div>
+      <div class="arrow-down even"></div>
+    </div>
+
+    <div class="bottom-row"> 
+      <div class="arrow-up odd"></div>
+      <div class="arrow-up even"></div>
+      <div class="arrow-up odd"></div>
+      <div class="arrow-up even"></div>
+      <div class="arrow-up odd"></div>
+      <div class="arrow-up even"></div>
+      </div>
+  </div>
+
+
+<div class="piece_1" draggable="true"></div>
+<div class="piece_2" draggable="true"></div>
+<div class="piece_3" draggable="true"></div>
+<div class="piece_4" draggable="true"></div>
+<div class="piece_5" draggable="true"></div>
+<div class="piece"></div>
+
+</div>
+
+<div class="chess_test"> 
+  <div id='chess_board'>
+  </div>
+      <br/>
+  <div id='game_initializer'>
+    <input id='username' value=<?php echo $_SESSION['username']?>> 
+    
+    <select id='pcolor'>
+      <option value='W'>W</option>
+      <option value='B'>B</option>
+    </select>
+    
+    <button id='chess_login' class='btn btn-primary'>ΕΙΣΟΔΟΣ ΣΤΟ ΠΑΙΧΝΙΔΙ</button><br>
+  </div>
+
+  <div id='game_info'>
+  	<p>Test</p>
+  </div>
+
+  <div id='move_div'>
+    Δώσε κίνηση (x1 y1 x2 y2): <input id='the_move'>  <button id='do_move' class='btn btn-primary'>ΚΑΝΕ ΤΗΝ ΚΙΝΗΣΗ</button><br>
+  </div>
+    <br/>
+    <br/>
+  <button id='chess_reset' class='btn btn-primary'>ΕΝΑΡΞΗ/RESET</button>
+    <br>
+</div>
+</div>
+
+
 	</body>
 </html>

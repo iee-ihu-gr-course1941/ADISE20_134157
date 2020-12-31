@@ -12,7 +12,8 @@
 				dataType: "json",
 				contentType: 'application/json',
 				data: JSON.stringify( {username: username, password: password }),
-				success: function(data){alert("Welcome, "+data.username+".");window.location = "index.php";}
+				success: function(data){alert("Welcome, "+data.username+".");window.location = "index.php";},
+				error: login_error
 			});
 		}
 	});// End of Login
@@ -34,9 +35,7 @@
 				contentType: 'application/json',
 				data: JSON.stringify( {username: username, password: password }),
 				success: function(){window.location = "login.php";},
-				error: function(response){
-					$("#response").html(response);
-				}
+				error: login_error
 			});
 		}
 	});// End of signup
@@ -51,10 +50,8 @@
 			contentType: 'application/json',
 			data: JSON.stringify( {msg: msg }),
 			success: function(data){window.location = "index.php";},
-			error: function(data){
-				$("#response").html(data);
-			}
-		});
+			error: login_error
+			});
 	});// End of signup
 
 	loadChat();
@@ -74,11 +71,11 @@
 			});
 	}
 
-	
+	/*
 	setInterval(function(){
 		loadChat(); // Each second call function loadChat()	
 	},2000);
-	
+	*/
 
 	/* Show Chat window */
 	$("#message-data").focus(function(){
@@ -90,4 +87,11 @@
 		document.getElementById('title').style.display = "none";
 		document.getElementById('form').style.display = "none";
 	});
+
+
 });
+
+function login_error(data,y,z,c) {
+	var x = data.responseJSON;
+	alert(x.errormesg);
+}

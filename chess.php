@@ -3,7 +3,7 @@
 ini_set('display_errors','on' );
 
 require_once "lib/dbconnect.php";
-//require_once "lib/board.php";
+require_once "lib/board.php";
 require_once "lib/game.php";
 require_once "lib/users.php";
 
@@ -22,6 +22,8 @@ switch ($r=array_shift($request)) {
                             break;
                 case 'piece': handle_piece($method, $request[0],$request[1],$input);
                             break;
+                case 'dice': handle_dice($method, $request[0],$request[1], $input);
+                            break;
                 default: header("HTTP/1.1 404 Not Found");
                             break;
 			}
@@ -37,14 +39,13 @@ switch ($r=array_shift($request)) {
 }
 
 function handle_board($method,$input) {
- 
-        if($method=='GET') {
-                show_board($input);
-        } else if ($method=='POST') {
-                reset_board();
-				show_board($input);
-        }
-		
+
+	if($method=='GET') {
+    	show_board($input);
+    } else if ($method=='POST') {
+    	reset_board();
+		show_board($input);
+    }	
 }
 
 function handle_piece($method, $x,$y,$input) {
@@ -55,11 +56,7 @@ function handle_piece($method, $x,$y,$input) {
     }    
 }
  
-function handle_player($method, $request,$input) { // called from chess.php switch case 'players'
-	//print_r($method);
-	//print_r($request);
-	//print_r($input);
-	
+function handle_player($method, $request,$input) { // called from chess.php switch case 'players'	
 	switch ($b=array_shift($request)) {
 		case '':
 		case null: if($method=='GET') {show_users($method);}
@@ -72,8 +69,15 @@ function handle_player($method, $request,$input) { // called from chess.php swit
 		default: header("HTTP/1.1 404 Not Found");
 				 print json_encode(['errormesg'=>"Player $b not found."]);
                  break;
-
 	}
 }
- 
+
+function handle_dice($method, $dice1,$dice2, $input) {
+    if($method=='GET') {
+        show_piece($x,$y);
+    } else if ($method=='PUT') {
+        do_roll($dice1,$dice2, $input['token']);
+    }    
+}
+
 ?>

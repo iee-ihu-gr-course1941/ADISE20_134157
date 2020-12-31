@@ -20,7 +20,7 @@
   $row = $result->fetch_all(MYSQLI_ASSOC);
   if($row[0]['c']>0) {
     header("HTTP/1.1 400 Bad Request");
-    print json_encode(['errormesg'=>"Player $username is already set. Please select another username."]);
+    print json_encode(['errormesg'=>"Username $username is already set. Please select another username."]);
   }else{
     $sql = "INSERT INTO users(username,password) VALUES(?,?) ";
     $stmt = $mysqli->prepare($sql);

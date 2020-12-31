@@ -8,7 +8,15 @@ IMG.piece {width: 3em; height:3em;}
 .chess_test{float:right;}
 .board_gui{margin-left:2%; margin-right:2%;}
 
-#username{pointer-events: none;}
+/*#username{pointer-events: none;}*/
+
+.dice1, .dice2{
+  z-index:1;
+  display:inline-block;
+  position:relative;
+  top: 200px;
+  left:230px;
+}
 
 .board {
   width: 610px;
@@ -32,7 +40,7 @@ IMG.piece {width: 3em; height:3em;}
 
 .right-bin {
   position: absolute;
-  left: 330px;
+  left: 334px;
   top: 0px;
 }
 
@@ -95,68 +103,40 @@ IMG.piece {width: 3em; height:3em;}
   padding: 5px;
   background-color: #23232d;
   position: absolute;
-  left: 280px;
+  left: 285px;
   top: 0px;
 }
 
 .piece_1 {
-  width: 36px;
-  height: 36px;
-  background-color: #c23c47;
-  opacity: 1;
   position: absolute;
   top: 0;
-  left: 17px;
+  right: 10px;
   z-value: 1;
-  border-radius: 18px;
 }
 
 .piece_2 {
-  width: 36px;
-  height: 36px;
-  background-color: #c23c47;
   position: absolute;
-  top: 38px;
-  left: 17px;
+  top: 42px;
+  right: 10px;
   z-value: 1;
-  border-radius: 18px;
-  opacity: 1;
 }
 
 .piece_3 {
-  width: 36px;
-  height: 36px;
-  background-color: #c23c47;
   position: absolute;
-  top: 76px;
-  left: 17px;
+  top: 84px;
+  right: 10px;
   z-value: 1;
-  border-radius: 18px;
-  opacity: 1;
 }
 .piece_4 {
-  width: 36px;
-  height: 36px;
-  background-color: #c23c47;
   position: absolute;
-  top: 114px;
-  left: 17px;
+  top: 126px;
+  right: 10px;
   z-value: 1;
-  border-radius: 18px;
-  opacity: 1;
 }
 
 .piece_5 {
-  width: 36px;
-  height: 36px;
-  background-color: #c23c47;
   position: absolute;
-  top: 152px;
-  left: 17px;
+  top: 168px;
+  right: 10px;
   z-value: 1;
-  border-radius: 18px;
-  opacity: 1;
 }
-
-
-

@@ -24,6 +24,8 @@
       header('Content-type: application/json');
       print  json_encode($input, JSON_PRETTY_PRINT);
   }else{
-    exit('Wrong inputs. Please try again.');
+    header("HTTP/1.1 400 Bad Request");
+    print json_encode(['errormesg'=>"Make sure account already exists or input data is correct!"]);
+    //exit('Make sure account already exists or input data is correct!');
   }
 ?>

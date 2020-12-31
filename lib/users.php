@@ -21,7 +21,7 @@ function show_user($b) {
 }
 
 function set_user($b,$input) {
-	print_r($input);
+	//print_r($input['token']);	
 	if(!isset($input['username'])) {
 		header("HTTP/1.1 400 Bad Request");
 		print json_encode(['errormesg'=>"No username given."]);
@@ -68,7 +68,7 @@ function handle_user($method, $b,$input) {
 }
 
 function current_color($token) {
-	
+
 	global $mysqli;
 	if($token==null) {return(null);}
 	$sql = 'select * from players where token=?';

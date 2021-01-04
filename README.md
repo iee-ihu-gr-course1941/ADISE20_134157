@@ -124,12 +124,6 @@ PUT /board/dice/:dice1/:dice2/
 ```
 Ανάθεση τιμών μετά από το roll των ζαριών. 
 
-Json Data:
-| Field         | Description   | Required  |
-| ------------- |:-------------:| -----:    |
-| username      | Το username για τον παίκτη p.  | yes       |
-| color         | To χρώμα που επέλεξε ο παίκτης p.  | yes       |
-
 ### Status
 #### Ανάγνωση κατάστασης παιχνιδιού
 ``` json

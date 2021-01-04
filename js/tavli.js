@@ -343,13 +343,10 @@ function drawDice(){
 }
 
 function drawDice_by_data(data){
-	if(data[0].p_turn != null){
+	if(data[0].p_turn != null || data[0].dice1 != null || data[0].dice2 != null){
 		var d1 = '<img src="images/dw'+data[0].dice1+'.png" />';
 		var d2 = '<img src="images/dw'+data[0].dice2+'.png" />';
 
 		$('.dice1').html(d1); $('.dice2').html(d2);		
-	}else{
-		console.log("dn kserw dn apantaw")
-	}
-					
+	}					
 }

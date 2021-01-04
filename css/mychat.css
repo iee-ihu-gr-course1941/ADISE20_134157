@@ -43,7 +43,7 @@ body {
 	font-weight:500;
 	line-height: 60px;
 	text-align:center;
-	border-bottom:1px solid #006fe6;
+	border-bottom:1px solid #006fe6;s
 	border-radius: 5px 5px 0 0;
 	display:none;
 }
@@ -87,8 +87,8 @@ body {
 }
 
 .form .inbox .msg-header p{
-	color: #fff; 
-	background: #007bff;
+	color: #333; /* was #fff; */
+	background: #efefef; /* was #007bff; */
 	border-radius: 10px;
 	padding: 8px 10px;
 	font-size:14px;
@@ -167,8 +167,4 @@ body {
 
 .wrapper .typing-field .input-data button:hover{
 	background:#006fef;	
-}
-
-input[id=username] {
-    pointer-events: none;
 }

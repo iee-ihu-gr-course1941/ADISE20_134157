@@ -2,6 +2,10 @@
   include("dbconnect.php");
   header('Content-type: application/json');
   $input = json_decode(file_get_contents('php://input'),true);
+  // If already logged in
+  if(isset($_SESSION['loggedIN'])){
+    header('Location: index.php');
+  }
 
   global $mysqli;
 
@@ -24,10 +28,9 @@
 
     if($stmt->execute()){
       header('Content-type: application/json');
-      print json_encode($result->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
+      print  json_encode($input, JSON_PRETTY_PRINT);
     }else{
-      header("HTTP/1.1 400 Bad Request");
-      print json_encode(['errormesg'=>"Query was not executed..."]);
+      exit ("Query could not execute !");
     }
   }
 ?>

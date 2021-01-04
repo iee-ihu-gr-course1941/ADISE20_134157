@@ -16,6 +16,8 @@
     <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/dashboard.css" rel="stylesheet">
 	<link href="css/mychat.css" rel="stylesheet">
+
+	<!-- <link href="css/mycss.css" rel="stylesheet"> -->
 		
     <script src="bootstrap/jquery-3.2.1.min.js"></script>
     <script src="bootstrap/popper.min.js"></script>
@@ -24,12 +26,13 @@
 	<script src="js/main.js"></script>
 
 	<script src="js/tavli.js"></script>
-	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+		
 	<link href="css/mybackgammon.css" rel="stylesheet">
+	<!-- <script src="js/mychess.js"></script> -->
 
-  	<script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
-  	<link href="jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  <link href="jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
 </head>
 	<body>
@@ -102,14 +105,7 @@
 <div class="piece_3" draggable="true"><img src="images/W.png"/></div>
 <div class="piece_4" draggable="true"><img src="images/W.png"/></div>
 <div class="piece_5" draggable="true"><img src="images/W.png"/></div>
-
 <div class="piece"></div>
-
-<div class="piece_6" draggable="true"><img src="images/B.png"/></div>
-<div class="piece_7" draggable="true"><img src="images/B.png"/></div>
-<div class="piece_8" draggable="true"><img src="images/B.png"/></div>
-<div class="piece_9" draggable="true"><img src="images/B.png"/></div>
-<div class="piece_10" draggable="true"><img src="images/B.png"/></div>
 
 </div>
 
@@ -120,7 +116,7 @@
     <br/>
     
     <div id='game_initializer'>
-      <input id='username' value=<?php echo $_SESSION['username'] ?> > 
+      <input id='username'> 
 
       <select id='pcolor'>
         <option value='W'>W</option>
@@ -140,11 +136,11 @@
       Δώσε κίνηση (x1 y1): <input id='the_move_src'> (x2 y2):
       <select id='the_move_dest'></select>
       
-      <button id='dice' class='btn btn-primary'>ΡΙΞΕ ΖΑΡΙΑ</button><br><br>
       <button id='do_move2' class='btn btn-primary'>ΚΑΝΕ ΤΗΝ ΚΙΝΗΣΗ 2</button><br>
     </div>
 
     <br/><br/>
+    <button id='dice' class='btn btn-primary'>ΡΙΞΕ ΖΑΡΙΑ</button><br><br>
     <button id='chess_reset' class='btn btn-primary'>ΕΝΑΡΞΗ/RESET</button><br>
   </div>
 

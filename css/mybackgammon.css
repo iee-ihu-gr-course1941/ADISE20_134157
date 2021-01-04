@@ -140,37 +140,3 @@ IMG.piece {width: 3em; height:3em;}
   right: 10px;
   z-value: 1;
 }
-
-.piece_6 {
-  position: absolute;
-  top: 416px;
-  right: 10px;
-  z-value: 1;
-}
-
-.piece_7 {
-  position: absolute;
-  top: 374px;
-  right: 10px;
-  z-value: 1;
-}
-
-.piece_8 {
-  position: absolute;
-  top: 332px;
-  right: 10px;
-  z-value: 1;
-}
-.piece_9 {
-  position: absolute;
-  top: 290px;
-  right: 10px;
-  z-value: 1;
-}
-
-.piece_10 {
-  position: absolute;
-  top: 248px;
-  right: 10px;
-  z-value: 1;
-}

@@ -110,33 +110,67 @@ IMG.piece {width: 3em; height:3em;}
 .piece_1 {
   position: absolute;
   top: 0;
-  right: 10px;
+  right: 12px;
   z-value: 1;
 }
 
 .piece_2 {
   position: absolute;
   top: 42px;
-  right: 10px;
+  right: 12px;
   z-value: 1;
 }
 
 .piece_3 {
   position: absolute;
   top: 84px;
-  right: 10px;
+  right: 12px;
   z-value: 1;
 }
 .piece_4 {
   position: absolute;
   top: 126px;
-  right: 10px;
+  right: 12px;
   z-value: 1;
 }
 
 .piece_5 {
   position: absolute;
   top: 168px;
-  right: 10px;
+  right: 12px;
+  z-value: 1;
+}
+
+.piece_6 {
+  position: absolute;
+  top: 416px;
+  right: 12px;
+  z-value: 1;
+}
+
+.piece_7 {
+  position: absolute;
+  top: 374px;
+  right: 12px;
+  z-value: 1;
+}
+
+.piece_8 {
+  position: absolute;
+  top: 332px;
+  right: 12px;
+  z-value: 1;
+}
+.piece_9 {
+  position: absolute;
+  top: 290px;
+  right: 12px;
+  z-value: 1;
+}
+
+.piece_10 {
+  position: absolute;
+  top: 248px;
+  right: 12px;
   z-value: 1;
 }

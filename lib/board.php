@@ -292,10 +292,38 @@ function do_roll($dice1,$dice2,$token) {
 	$st = $mysqli->prepare($sql);
 	$st->bind_param('ii',$dice1,$dice2);
 	$st->execute();
+	$res = $st->get_result();
 
 	header('Content-type: application/json');
-	print json_encode(read_board(), JSON_PRETTY_PRINT);
+	print json_encode(next_turn(), JSON_PRETTY_PRINT);
 }
 
+function next_turn(){
+	global $mysqli;
+
+	$sql = "select * from game_status";
+	$st = $mysqli->prepare($sql);
+	$st->execute();
+	$result = $st->get_result();
+	$row = mysqli_fetch_assoc($result);
+
+
+	if($row['p_turn'] == 'W'){
+		$sql2 = "update `game_status` set `p_turn`='B' ";
+		$st = $mysqli->prepare($sql2);
+		$st->execute();
+	}else{
+		$sql2 = "update `game_status` set `p_turn`='W' ";
+		$st = $mysqli->prepare($sql2);
+		$st->execute();
+	}
+	
+	//print $row['dice1'];
+	//print $row['dice2'];
+
+	header('Content-type: application/json');
+	print json_encode($row, JSON_PRETTY_PRINT);
+}
 
 ?>
+

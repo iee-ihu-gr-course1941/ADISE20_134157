@@ -24,6 +24,8 @@ switch ($r=array_shift($request)) {
                             break;
                 case 'dice': handle_dice($method, $request[0],$request[1], $input);
                             break;
+                case 'draw': handle_draw($method, $input);
+                            break;
                 default: header("HTTP/1.1 404 Not Found");
                             break;
 			}
@@ -73,11 +75,15 @@ function handle_player($method, $request,$input) { // called from chess.php swit
 }
 
 function handle_dice($method, $dice1,$dice2, $input) {
-    if($method=='GET') {
-        show_piece($x,$y);
-    } else if ($method=='PUT') {
+    if ($method=='PUT') {
         do_roll($dice1,$dice2, $input['token']);
-    }    
+    }  
+}
+
+function handle_draw($method, $input) {
+    if ($method=='GET') {
+        show_status();
+    }
 }
 
 ?>

@@ -8,6 +8,7 @@ var counter =0;
 $(function () {
 	draw_empty_board();
 	fill_board();
+	drawDice();
 	
 	$('#chess_login').click( login_to_game);
 	$('#chess_reset').click( reset_board);
@@ -114,7 +115,7 @@ function fill_board() {
 }
 
 function reset_board() {
-	$.ajax({url: "chess.php/board/", headers: {"X-Token": me.token}, method: 'POST',  success: fill_board_by_data });
+	$.ajax({url: "chess.php/board/", headers: {"X-Token": me.token}, method: 'POST',  success: fill_board_by_data, drawDice_by_data });
 	$('#move_div').hide();
 	$('#game_initializer').show(2000);
 }
@@ -173,15 +174,15 @@ function login_error(data,y,z,c) {
 }
 
 function game_status_update() {
-	
 	clearTimeout(timer);
-	$.ajax({url: "chess.php/status/", success: update_status,headers: {"X-Token": me.token} });
+	$.ajax({url: "chess.php/status/", success: update_status, headers: {"X-Token": me.token} });
 }
 
 function update_status(data) {
 	last_update=new Date().getTime();
 	var game_stat_old = game_status;
 	game_status=data[0];
+	drawDice_by_data(data);
 	update_info();
 	clearTimeout(timer);
 	if(game_status.p_turn==me.piece_color &&  me.piece_color!=null) {
@@ -189,9 +190,10 @@ function update_status(data) {
 		// do play
 		if(game_stat_old.p_turn!=game_status.p_turn) {
 			fill_board();
+			drawDice();
 		}
 		$('#move_div').show(1000);
-		timer=setTimeout(function() { game_status_update();}, 15000);
+		timer=setTimeout(function() { game_status_update();}, 4000);
 	} else {
 		// must wait for something
 		$('#move_div').hide(1000);
@@ -224,6 +226,7 @@ function do_move() {
 }
 
 function move_result(data){
+	drawDice_by_data(data);
 	game_status_update();
 	fill_board_by_data(data);
 }
@@ -286,7 +289,7 @@ function start_dragging ( event, ui ) {
 }
 
 function dropping( event, ui ) {
-        var x;
+    var x;
 
 	ui.draggable[0].validMove=1;
 	var id = this.id;
@@ -317,23 +320,36 @@ function rollDice(){
 	var dice1 = Math.floor(Math.random()*6)+1;
 	var dice2 = Math.floor(Math.random()*6)+1;
 
-	$.ajax({url: "chess.php/board/dice/"+dice1+"/"+dice2, 
+	$.ajax({url: "chess.php/board/dice/"+dice1+'/'+dice2, 
 			method: 'PUT',
 			dataType: "json",
 			contentType: 'application/json',
 			data: JSON.stringify( {dice1: dice1, dice2: dice2}),
 			headers: {"X-Token": me.token},
-			success: move_result,
-			error: login_error});
-
-	var d1 = '<img src="images/dw'+dice1+'.png" />';
-	var d2 = '<img src="images/db'+dice2+'.png" />';
-
-	$('.dice1').html(d1); $('.dice2').html(d2);
-
-	if(dice1 == dice2){	
-		//alert("DOUBLES!");
-	}
+			success: drawDice
+		});
 
 	//alert("WHITE DICE: "+dice1+" and BLACK DICE: "+dice2);
+}
+
+function drawDice(){
+		$.ajax({url: "chess.php/status/", 
+			method: 'GET',
+			dataType: "json",
+			contentType: 'application/json',
+			headers: {"X-Token": me.token},
+			success: function(data){drawDice_by_data(data);}
+		});
+}
+
+function drawDice_by_data(data){
+	if(data[0].p_turn != null){
+		var d1 = '<img src="images/dw'+data[0].dice1+'.png" />';
+		var d2 = '<img src="images/dw'+data[0].dice2+'.png" />';
+
+		$('.dice1').html(d1); $('.dice2').html(d2);		
+	}else{
+		console.log("dn kserw dn apantaw")
+	}
+					
 }

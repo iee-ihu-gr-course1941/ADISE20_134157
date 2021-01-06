@@ -6,7 +6,7 @@ function show_status() {
 	
 	check_abort();
 	
-	$sql = 'SELECT * FROM game_status';
+	$sql = 'select * from game_status';
 	$st = $mysqli->prepare($sql);
 
 	$st->execute();

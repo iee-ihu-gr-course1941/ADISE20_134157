@@ -286,44 +286,48 @@ function do_move($x,$y,$x2,$y2) {
 	print json_encode(read_board(), JSON_PRETTY_PRINT);
 }
 
-function do_roll($dice1,$dice2,$token) {
-	global $mysqli;
-	$sql = 'update `game_status` set `dice1`=?, `dice2`=? ';
-	$st = $mysqli->prepare($sql);
-	$st->bind_param('ii',$dice1,$dice2);
-	$st->execute();
-	$res = $st->get_result();
 
-	header('Content-type: application/json');
-	print json_encode(next_turn(), JSON_PRETTY_PRINT);
-}
+/**** Dice functions ****/ /**** Dice functions ****/ /**** Dice functions ****/ /**** Dice functions ****/
 
-function next_turn(){
-	global $mysqli;
-
-	$sql = "select * from game_status";
-	$st = $mysqli->prepare($sql);
-	$st->execute();
-	$result = $st->get_result();
-	$row = mysqli_fetch_assoc($result);
-
-
-	if($row['p_turn'] == 'W'){
-		$sql2 = "update `game_status` set `p_turn`='B' ";
-		$st = $mysqli->prepare($sql2);
-		$st->execute();
-	}else{
-		$sql2 = "update `game_status` set `p_turn`='W' ";
-		$st = $mysqli->prepare($sql2);
-		$st->execute();
+function do_roll($dice1, $dice2, $token) {
+	
+	if($token==null || $token=='') {
+		header("HTTP/1.1 400 Bad Request");
+		print json_encode(['errormesg'=>"token is not set."]);
+		exit;
 	}
 	
-	//print $row['dice1'];
-	//print $row['dice2'];
+	$color = current_color($token);
+	if($color==null ) {
+		header("HTTP/1.1 400 Bad Request");
+		print json_encode(['errormesg'=>"You are not a player of this game."]);
+		exit;
+	}
+	$status = read_status();
+	if($status['status']!='started') {
+		header("HTTP/1.1 400 Bad Request");
+		print json_encode(['errormesg'=>"Game is not in action."]);
+		exit;
+	}
+	if($status['p_turn']!=$color) {
+		header("HTTP/1.1 400 Bad Request");
+		print json_encode(['errormesg'=>"It is not your turn."]);
+		exit;
+	}
+
+	global $mysqli;
+	$sql = 'call set_dices(?,?) ';
+	$st = $mysqli->prepare($sql);
+	$st->bind_param('ii',$dice1, $dice2);
+	$st->execute();
+
+	$sql2 = "select * from game_status";
+	$stmt = $mysqli->prepare($sql2);
+	$stmt->execute();
+	$result = $stmt->get_result();
 
 	header('Content-type: application/json');
-	print json_encode($row, JSON_PRETTY_PRINT);
-}
-
+	print json_encode($result->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
+} // End of do_roll
 ?>
 

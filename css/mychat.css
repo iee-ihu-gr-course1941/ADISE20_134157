@@ -87,8 +87,8 @@ body {
 }
 
 .form .inbox .msg-header p{
-	color: #fff; 
-	background: #007bff;
+	color: #333; 
+	background: #efefef;
 	border-radius: 10px;
 	padding: 8px 10px;
 	font-size:14px;
@@ -96,8 +96,8 @@ body {
 }
 
 .form .user-inbox .msg-header p{
-	color: #333;
-	background: #efefef;
+	color: #fff; 
+	background: #007bff;
 }
 
 .wrapper .typing-field{

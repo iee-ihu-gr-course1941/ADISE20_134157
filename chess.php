@@ -6,6 +6,7 @@ require_once "lib/dbconnect.php";
 require_once "lib/board.php";
 require_once "lib/game.php";
 require_once "lib/users.php";
+require_once "lib/chat.php";
 
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
@@ -24,8 +25,6 @@ switch ($r=array_shift($request)) {
                             break;
                 case 'dice': handle_dice($method, $request[0],$request[1], $input);
                             break;
-                case 'draw': handle_draw($method, $input);
-                            break;
                 default: header("HTTP/1.1 404 Not Found");
                             break;
 			}
@@ -36,8 +35,18 @@ switch ($r=array_shift($request)) {
 			break;
 	case 'players': handle_player($method, $request,$input); // called from tavli.js login_to_game
             break;
+    case 'chat': handle_chat($method, $input);
+            break;
     default:  header("HTTP/1.1 404 Not Found");
                         exit;
+}
+
+function handle_chat($method, $input){
+    if($method=='GET'){
+        loadChat();
+    }else if ($method == 'POST'){
+        sendMessage($input);
+    }
 }
 
 function handle_board($method,$input) {
@@ -74,16 +83,10 @@ function handle_player($method, $request,$input) { // called from chess.php swit
 	}
 }
 
-function handle_dice($method, $dice1,$dice2, $input) {
+function handle_dice($method, $dice1, $dice2, $input) {
     if ($method=='PUT') {
-        do_roll($dice1,$dice2, $input['token']);
-    }  
-}
-
-function handle_draw($method, $input) {
-    if ($method=='GET') {
-        show_status();
-    }
+        do_roll($dice1, $dice2, $input['token']);
+    } 
 }
 
 ?>

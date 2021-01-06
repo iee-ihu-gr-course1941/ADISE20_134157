@@ -141,7 +141,7 @@ GET /status/
 ```
 Επιστρέφει το στοιχείο [Game_status](https://github.com/iee-ihu-gr-course1941/ADISE20_134157#status) σε json μορφή.
 
-### Posts
+### Chat
 #### Αποστολή μηνύματος
 ``` json
 POST /chat/?msg=message

@@ -14,7 +14,8 @@
 				dataType: "json",
 				contentType: 'application/json',
 				data: JSON.stringify( {username: username, password: password }),
-				success: function(data){alert("Welcome, "+data[0].username+".");window.location = "index.php";}
+				success: function(data){alert("Welcome, "+data[0].username+".");window.location = "index.php";},
+				error: login_error
 			});
 		}
 	});// End of Login
@@ -35,13 +36,14 @@
 				dataType: "json",
 				contentType: 'application/json',
 				data: JSON.stringify( {username: username, password: password }),
-				success: function(){window.location = "login.php";}
+				success: function(){window.location = "login.php";},
+				error: login_error
 			});
 		}
 	});// End of signup
-
-
-
-
 }); // End of $(document).ready(function()
 
+function login_error(data,y,z,c) {
+	var x = data.responseJSON;
+	alert(x.errormesg);
+} // End of login_error

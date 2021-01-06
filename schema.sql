@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2020 at 05:32 PM
+-- Generation Time: Jan 06, 2021 at 03:22 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -46,6 +46,19 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `move_piece` (IN `x1` TINYINT, IN `y
 	update game_status set p_turn=if(p_color='W','B','W');
 	
     END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `set_dices` (IN `x` SMALLINT, IN `y` SMALLINT)  BEGIN
+	declare player char;
+    
+    select p_turn into player from game_status;
+    
+	update game_status
+	set dice1=x, dice2=y;
+    
+    update game_status
+    set p_turn=if(player='W','B','W');
+	
+END$$
 
 DELIMITER ;
 
@@ -215,7 +228,7 @@ CREATE TABLE `game_status` (
 --
 
 INSERT INTO `game_status` (`status`, `p_turn`, `dice1`, `dice2`, `result`, `last_change`) VALUES
-('not active', NULL, NULL, NULL, NULL, '2020-12-31 16:29:58');
+('not active', NULL, NULL, NULL, NULL, '2021-01-06 13:22:33');
 
 --
 -- Triggers `game_status`
@@ -245,8 +258,8 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`username`, `piece_color`, `token`, `last_action`) VALUES
-(NULL, 'B', NULL, '2020-12-31 16:29:33'),
-(NULL, 'W', NULL, '2020-12-31 16:29:58');
+(NULL, 'B', NULL, '2021-01-06 13:22:31'),
+(NULL, 'W', NULL, '2021-01-06 13:22:31');
 
 -- --------------------------------------------------------
 
@@ -260,6 +273,13 @@ CREATE TABLE `posts` (
   `username` varchar(20) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `msg`, `username`, `date`) VALUES
+(1, 'Welcome.', 'admin', '2021-01-06 11:02:44');
 
 -- --------------------------------------------------------
 
@@ -280,7 +300,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `password`) VALUES
 (2, 'admin', '202cb962ac59075b964b07152d234b70'),
 (5, 'guest', '202cb962ac59075b964b07152d234b70'),
-(8, 'test', '202cb962ac59075b964b07152d234b70');
+(8, 'test', '202cb962ac59075b964b07152d234b70'),
+(9, 'it134157', '202cb962ac59075b964b07152d234b70');
 
 --
 -- Indexes for dumped tables
@@ -324,13 +345,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

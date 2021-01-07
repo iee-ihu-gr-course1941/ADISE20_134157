@@ -8,9 +8,6 @@ Table of Contents
          * [Board](#board)
             * [Ανάγνωση Board](#ανάγνωση-board)
             * [Αρχικοποίηση Board](#αρχικοποίηση-board)
-         * [Piece](#piece)
-            * [Ανάγνωση Θέσης/Piece](#ανάγνωση-θέσηςpiece)
-            * [Μεταβολή Θέσης Piece](#μεταβολή-θέσης-piece)
          * [Player](#player)
             * [Ανάγνωση στοιχείων παίκτη](#ανάγνωση-στοιχείων-παίκτη)
             * [Καθορισμός στοιχείων παίκτη](#καθορισμός-στοιχείων-παίκτη)
@@ -26,7 +23,10 @@ Table of Contents
          * [Players](#players)
          * [Game_status](#game_status)
          * [Posts](#posts)
-      
+
+#UPDATE (07/01/21)
+Αφαιρέθηκαν σχόλια για τις κινήσεις διότι δεν είχαν υλοποιηθεί.
+
 # Demo Page
 
 Μπορείτε να κατεβάσετε τοπικά ή να επισκευτείτε την σελίδα: [https://users.iee.ihu.gr/~it134157/adise20/ADISE20_134157/index.php](https://users.iee.ihu.gr/~it134157/adise20/ADISE20_134157/index.php)
@@ -83,26 +83,6 @@ GET /board/
 POST /board/
 ```
 Αρχικοποιεί το Board, δηλαδή το παιχνίδι. Γίνονται reset τα πάντα σε σχέση με το παιχνίδι. Επιστρέφει σε json την τρέχουσα μορφή του [Board](https://github.com/iee-ihu-gr-course1941/ADISE20_134157#board).
-
-### Piece
-#### Ανάγνωση Θέσης/Piece
-``` json
-GET /board/piece/:x/:y/
-```
-Επιστρέφει τα στοιχεία από το [Board](https://github.com/iee-ihu-gr-course1941/ADISE20_134157#board) με συντεταγμένες x,y. 
-
-#### Μεταβολή Θέσης Piece(
-``` json
-PUT /board/piece/:x/:y/
-```
-Json Data:
-
-| Field         | Description   | Required  |
-| ------------- |:-------------:| -----:    |
-| x             | Η νέα θέση x  | yes       |
-| y             | Η νέα θέση y  | yes       |
-
-Κάνει την κίνηση το piece από την θέση x,y στην νέα θέση. Προφανώς ελέγχεται η κίνηση αν είναι νόμιμη καθώς και αν είναι η σειρά του παίκτη να παίξει με βάση το token. Επιστρέφει τα στοιχεία από το [Board](https://github.com/iee-ihu-gr-course1941/ADISE20_134157#board) με συντεταγμένες x,y. Περιλαμβάνει το χρώμα του piece και τον τύπο.
 
 ### Player
 #### Ανάγνωση στοιχείων παίκτη
